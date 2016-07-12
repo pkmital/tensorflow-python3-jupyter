@@ -11,12 +11,12 @@ RUN apt-get update && apt-get install -y \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install -U distribute \
+RUN pip install -U distribute \
         setuptools \
         pip \
         && \
 
-RUN pip3 --no-cache-dir install \
+RUN pip --no-cache-dir install \
        	ipykernel \
         jupyter \
         numpy \
@@ -36,7 +36,7 @@ COPY run_jupyter.sh /
 
 ENV TENSORFLOW_VERSION 0.9.0
 
-RUN pip3 --no-cache-dir install \
+RUN pip --no-cache-dir install \
     	https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-${TENSORFLOW_VERSION}-cp34-cp34m-linux_x86_64.whl
 
 # tensorboard
