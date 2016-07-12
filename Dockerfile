@@ -5,18 +5,27 @@ RUN apt-get update && apt-get install -y \
 		liblapack-dev\
     	libatlas-base-dev \
 		gfortran \
+        python3-pip \
 		&& \
 
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip --no-cache-dir install \
-       	ipykernel \
-		scipy \
-        jupyter \
-        matplotlib \
+RUN pip3 install -U distribute \
+        setuptools \
+        pip \
         && \
-    python -m ipykernel.kernelspec
+
+RUN pip3 --no-cache-dir install \
+       	ipykernel \
+        jupyter \
+        "numpy>=1.11.0" \
+        "matplotlib>=1.5.1" \
+        scipy \
+        "scikit-image>=0.11.3" \
+        "scikit-learn>=0.17" \
+        && \
+    python3 -m ipykernel.kernelspec
 
 COPY jupyter_notebook_config.py /root/.jupyter/
 
@@ -27,7 +36,7 @@ COPY run_jupyter.sh /
 
 ENV TENSORFLOW_VERSION 0.9.0
 
-RUN pip --no-cache-dir install \
+RUN pip3 --no-cache-dir install \
     	https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-${TENSORFLOW_VERSION}-cp34-cp34m-linux_x86_64.whl
 
 # tensorboard
@@ -38,4 +47,4 @@ EXPOSE 8888
 
 WORKDIR "/notebooks"
 
-CMD ["/run_jupyter.sh"]
+CMD ["/run_jupyter.sh &"]
