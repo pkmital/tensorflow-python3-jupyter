@@ -19,11 +19,11 @@ RUN pip3 install -U distribute \
 RUN pip3 --no-cache-dir install \
        	ipykernel \
         jupyter \
-        "numpy>=1.11.0" \
-        "matplotlib>=1.5.1" \
+        numpy \
+        matplotlib \
         scipy \
-        "scikit-image>=0.11.3" \
-        "scikit-learn>=0.17" \
+        scikit-image \
+        scikit-learn \
         && \
     python3 -m ipykernel.kernelspec
 
