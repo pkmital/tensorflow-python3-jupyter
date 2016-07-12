@@ -13,8 +13,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN pip install -U distribute \
         setuptools \
-        pip \
-        && \
+        pip
 
 RUN pip --no-cache-dir install \
        	ipykernel \
