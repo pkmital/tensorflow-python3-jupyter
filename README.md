@@ -17,7 +17,7 @@ $ docker-machine ip
 This is the virtual machine's IP address, or location on your private network.  NOTE THIS IP ADDRESS!  As we'll need it in a second.  Now run:
 
 ```
-$ docker run -it -p 8888:8888 -p 6006:6006 -v /$(pwd)/tensorflow:/notebooks --name tf pkmital/tensorflow-python3-jupyter
+$ docker run -it -p 8888:8888 -p 6006:6006 -v /$(pwd)/tensorflow:/notebooks --name tf pkmital/tf.0.9.0-py.3.4
 ```
 
 On OSX, I discard the "/" just before the $(pwd).  On Windows, make sure to include it!  This command will download everything you need to run Tensorflow on a virtual machine.  If all succeeds, you will have a prompt like this:
