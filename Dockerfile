@@ -6,6 +6,10 @@ RUN apt-get update && apt-get install -y \
     	libatlas-base-dev \
 		gfortran \
         python3-pip \
+        tk-dev \
+        python-tk \
+        python3-tk \
+        python3-matplotlib \
         pkg-config \
         libfreetype6-dev \
 		&& \
@@ -35,17 +39,18 @@ COPY jupyter_notebook_config.py /root/.jupyter/
 # We just add a little wrapper script.
 COPY run_jupyter.sh /
 
-ENV TENSORFLOW_VERSION 0.9.0
+ENV TENSORFLOW_VERSION 0.10.0rc0
 
 RUN pip --no-cache-dir install \
-    	https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-${TENSORFLOW_VERSION}-cp34-cp34m-linux_x86_64.whl
+        https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.10.0rc0-cp34-cp34m-linux_x86_64.whl
 
 # Something Jupyter suggests to do:
 # http://jupyter-notebook.readthedocs.io/en/latest/public_server.html#docker-cmd
-ENV TINI_VERSION v0.6.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
-RUN chmod +x /usr/bin/tini
-ENTRYPOINT ["/usr/bin/tini", "--"]
+ENV TINI_VERSION v0.9.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
+RUN chmod +x /tini
+ENTRYPOINT ["/tini", "--"]
+
 
 # tensorboard
 EXPOSE 6006
