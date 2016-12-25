@@ -39,10 +39,10 @@ COPY jupyter_notebook_config.py /root/.jupyter/
 # We just add a little wrapper script.
 COPY run_jupyter.sh /
 
-ENV TENSORFLOW_VERSION 0.11.0rc1
+ENV TENSORFLOW_VERSION 0.12.0
 
 RUN pip --no-cache-dir install \
-        https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.11.0rc1-cp34-cp34m-linux_x86_64.whl
+        https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.12.0-cp34-cp34m-linux_x86_64.whl
 
 # Something Jupyter suggests to do:
 # http://jupyter-notebook.readthedocs.io/en/latest/public_server.html#docker-cmd
