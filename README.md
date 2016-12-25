@@ -17,15 +17,15 @@ $ docker-machine ip
 This is the virtual machine's IP address, or location on your private network.  NOTE THIS IP ADDRESS!  As we'll need it in a second.  Now run:
 
 ```
-$ docker run -it -p 8888:8888 -p 6006:6006 -v /$(pwd)/tensorflow:/notebooks --name tf pkmital/tf.0.9.0-py.3.4
+$ docker run -it -p 8888:8888 -p 6006:6006 -v /$(pwd)/tensorflow:/notebooks --name tf pkmital/tensorflow-python3-jupyter
 ```
 
 On OSX, I discard the "/" just before the $(pwd).  On Windows, make sure to include it!  This command will download everything you need to run Tensorflow on a virtual machine.  If all succeeds, you will have a prompt like this:
 
 ```
-$ docker run -it -p 8888:8888 -p 6006:6006 -v /$(pwd)/tensorflow:/notebooks --name tf pkmital/tf.0.9.0-py.3.4
-Unable to find image 'pkmital/tf.0.9.0-py.3.4:latest' locally
-latest: Pulling from pkmital/tf.0.9.0-py.3.4
+$ docker run -it -p 8888:8888 -p 6006:6006 -v /$(pwd)/tensorflow:/notebooks --name tf pkmital/tensorflow-python3-jupyter
+Unable to find image 'pkmital/tensorflow-python3-jupyter:latest' locally
+latest: Pulling from pkmital/tensorflow-python3-jupyter
 5c90d4a2d1a8: Pull complete
 ab30c63719b1: Pull complete
 c6072700a242: Pull complete
@@ -41,7 +41,7 @@ cbefc84e4f35: Pull complete
 17c100eff420: Pull complete
 a56c90619980: Pull complete
 Digest: sha256:01cdde18a2838f819fd72c50fba9837bcde65017bf25261e1c978014c43280e9
-Status: Downloaded newer image for pkmital/tf.0.9.0-py.3.4:latest
+Status: Downloaded newer image for pkmital/tensorflow-python3-jupyter:latest
 ```
 
 The next time you want to start this machine, you will launch the docker quickstart terminal and then write:
